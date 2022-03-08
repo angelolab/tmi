@@ -87,8 +87,12 @@ fail_under = 45
 omit = ["**/*test*.py"]
 
 [tool.coverage.xml] # Output coverage as xml for text editor ui integration
-output = "cov.xml"
+output = "coverage.xml"
 package_depth = 99
+
+[tool.coverage.json]
+output = "coverage.json"
+
 
 ## TESTING ##
 [tool.pytest.ini_options]

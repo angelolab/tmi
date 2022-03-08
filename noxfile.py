@@ -164,6 +164,7 @@ def coverage(session: Session) -> None:
     """
     report_args = session.posargs or ["report", "-m"]
     xml_args = session.posargs or ["xml", "-q"]
+    coveralls_args = session.posargs or ["json"]
 
     session.install("coverage[toml]")
 
@@ -172,6 +173,7 @@ def coverage(session: Session) -> None:
 
     session.run("coverage", *report_args)
     session.run("coverage", *xml_args)
+    session.run("coverage", *coveralls_args)
 
 
 @session(python=PYTHON_VERSIONS)

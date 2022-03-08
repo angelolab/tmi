@@ -28,7 +28,7 @@ env:
 before_install:
   - curl -sSL https://install.python-poetry.org | python3 -
   - poetry --version
-  - pip install nox nox-poetry
+  - pip install nox nox-poetry coveralls
 
 # Installs all packages needed for tmi in a virtual environment
 install:
@@ -51,4 +51,4 @@ jobs:
       script: nox -R -rs pre-commit
 
 after_success:
-  - poetry run coveralls
+  - coveralls
