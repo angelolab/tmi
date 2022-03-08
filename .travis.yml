@@ -1,29 +1,52 @@
-jobs:
-  include:
-    -
-      os: linux
-      dist: xenial
+language: python
+python:
+  - "3.9"
+  - "3.10"
+dist: xenial
 
 git:
   depth: false
 
-language: python
+stages:
+  - Quality
+  - Pre-Commit
+  # - Publish
 
-python:
-  - 3.8
+# Set the caches
+cache:
+  pip: true
+  directories:
+    - "$HOME/.cache/pre-commit"
 
-install:
-  - travis_retry pip install -r requirements.txt
-  - travis_retry pip install -r requirements-test.txt
-
+# Environment variables
 env:
+  # Set Matplotlib backend to Agg (Non-interactive, only writes to files)
   - MPLBACKEND=Agg
 
-cache: pip
+# Installs poetry, nox, and nox-poetry
+before_install:
+  - curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+  - poetry --version
+  - pip install nox nox-poetry
 
-script:
-  - python -m pip install --editable .
-  - python -m pytest --randomly-seed=42 --randomly-dont-reorganize --cov=tmi --pycodestyle tmi
+# Installs all packages needed for tmi in a virtual environment
+install:
+  - poetry install
+
+jobs:
+  include:
+    - stage: Quality
+    - name: lint
+      script: nox -rs mypy
+    - name: type
+      script: nox -rs typeguard
+    - name: safety
+      script: nox -rs safety
+    - name: test
+      script: nox -rs tests
+    - stage: Pre-Commit
+    - name: pre-commit
+      script: nox -rs pre-commit
 
 after_success:
-  - coveralls
+  - poetry run coveralls
