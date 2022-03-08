@@ -1,6 +1,8 @@
 import pytest
 
-from tmi.misc_utils import verify_in_list, verify_same_elements, create_invalid_data_str
+from tmi.misc_utils import create_invalid_data_str
+from tmi.misc_utils import verify_in_list
+from tmi.misc_utils import verify_same_elements
 
 
 def test_verify_in_list() -> None:
@@ -38,7 +40,9 @@ def test_verify_same_elements() -> None:
 
     with pytest.raises(ValueError):
         # the two lists provided do not contain the same elements
-        verify_same_elements(one=["elem1", "elem2", "elem2"], two=["elem2", "elem2", "elem4"])
+        verify_same_elements(
+            one=["elem1", "elem2", "elem2"], two=["elem2", "elem2", "elem4"]
+        )
 
 
 def test_create_invalid_data_str() -> None:

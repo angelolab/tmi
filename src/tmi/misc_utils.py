@@ -1,7 +1,10 @@
 import os
-from typing import Any, List, Optional
-import numpy as np
+from typing import Any
+from typing import List
+from typing import Optional
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def save_figure(save_dir: str, save_file: str, dpi: Optional[float] = 300) -> None:
@@ -79,15 +82,19 @@ def verify_in_list(**kwargs: Any) -> None:
         difference = [str(val) for val in test_list if val not in good_values]
 
         # Only printing up to the first 10 invalid values.
-        err_str = ("Displaying {0} of {1} invalid value(s) provided for list {2:^}.\n").format(
-            min(len(difference), 10), len(difference), test_list_name
-        )
+        err_str = (
+            "Displaying {} of {} invalid value(s) provided for list {:^}.\n"
+        ).format(min(len(difference), 10), len(difference), test_list_name)
 
         err_str += create_invalid_data_str(difference)
 
         raise ValueError(err_str)
 
-    print("All values in list {} exist in list {}".format(test_list_name, good_values_name))
+    print(
+        "All values in list {} exist in list {}".format(
+            test_list_name, good_values_name
+        )
+    )
     return
 
 
@@ -123,23 +130,25 @@ def verify_same_elements(**kwargs: Any) -> None:
         missing_vals_2 = [str(val) for val in (set(list_two_cast) - set(list_one_cast))]
 
         # Total missing values
-        missing_vals_total = [str(val) for val in set(list_one_cast) ^ set(list_two_cast)]
+        missing_vals_total = [
+            str(val) for val in set(list_one_cast) ^ set(list_two_cast)
+        ]
 
         err_str = (
-            "{0} value(s) provided for list {1:^} and list {2:^} are not found in both lists.\n"
+            "{} value(s) provided for list {:^} and list {:^} are not found in both lists.\n"
         ).format(len(missing_vals_total), list_one_name, list_two_name)
 
         # Only printing up to the first 10 invalid values for list one.
-        err_str += ("{0:>13} \n").format(
-            "Displaying {0} of {1} missing value(s) for list {2}\n".format(
+        err_str += ("{:>13} \n").format(
+            "Displaying {} of {} missing value(s) for list {}\n".format(
                 min(len(missing_vals_1), 10), len(missing_vals_2), list_one_name
             )
         )
         err_str += create_invalid_data_str(missing_vals_1) + "\n"
 
         # Only printing up to the first 10 invalid values for list two
-        err_str += ("{0:>13} \n").format(
-            "Displaying {0} of {1} missing value(s) for list {2}\n".format(
+        err_str += ("{:>13} \n").format(
+            "Displaying {} of {} missing value(s) for list {}\n".format(
                 min(len(missing_vals_2), 10), len(missing_vals_2), list_two_name
             )
         )
@@ -148,6 +157,8 @@ def verify_same_elements(**kwargs: Any) -> None:
         raise ValueError(err_str)
 
     print(
-        "List {0} and list {1} contain the same elements".format(list_one_name, list_two_name)
+        "List {} and list {} contain the same elements".format(
+            list_one_name, list_two_name
+        )
     )
     return

@@ -9,6 +9,7 @@ git:
 
 stages:
   - Quality
+  - Test
   - Pre-Commit
   # - Publish
 
@@ -27,7 +28,6 @@ env:
 before_install:
   - curl -sSL https://install.python-poetry.org | python3 -
   - poetry --version
-  # - pip install poetry
   - pip install nox nox-poetry
 
 # Installs all packages needed for tmi in a virtual environment
@@ -38,16 +38,17 @@ jobs:
   include:
     - stage: Quality
     - name: lint
-      script: nox -rs mypy
+      script: nox -R -rs mypy
     - name: type
-      script: nox -rs typeguard
+      script: nox -R -rs typeguard
     - name: safety
-      script: nox -rs safety
+      script: nox -R -rs safety
+    - stage: Test
     - name: test
-      script: nox -rs tests
+      script: nox -R -rs tests
     - stage: Pre-Commit
     - name: pre-commit
-      script: nox -rs pre-commit
+      script: nox -R -rs pre-commit
 
 after_success:
   - poetry run coveralls
