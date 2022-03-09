@@ -8,12 +8,12 @@ import numpy as np
 
 
 def save_figure(save_dir: str, save_file: str, dpi: Optional[float] = 300) -> None:
-    """_summary_
+    """Saves the figure in a directory.
 
     Args:
         save_dir (str): the name of the directory we wish to save to.
-        save_file (str): _description_
-        dpi (float, optional): _description_. Defaults to 300.
+        save_file (str): The file we wish to save to
+        dpi (float, optional): The pixel density of the figure. Defaults to 300.
 
     Raises:
         FileNotFoundError: The save directory does not exist.

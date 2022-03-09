@@ -11,6 +11,7 @@ stages:
   - Quality
   - Test
   - Pre-Commit
+  # - Build
   # - Publish
 
 # Set the caches
@@ -37,17 +38,17 @@ install:
 jobs:
   include:
     - stage: Quality
-    - name: lint
+    - name: "Linting"
       script: nox -R -rs mypy
-    - name: type
+    - name: "Type Checking"
       script: nox -R -rs typeguard
-    - name: safety
+    - name: "Safety"
       script: nox -R -rs safety
     - stage: Test
-    - name: test
+    - name: "Unit Tests"
       script: nox -R -rs tests
     - stage: Pre-Commit
-    - name: pre-commit
+    - name: "Git Pre-Commit hooks"
       script: nox -R -rs pre-commit
 
 after_success:
