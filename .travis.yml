@@ -38,17 +38,17 @@ install:
 jobs:
   include:
     - stage: Quality
-    - name: "Linting"
+      name: "Linting"
       script: nox -R -rs mypy
     - name: "Type Checking"
       script: nox -R -rs typeguard
     - name: "Safety"
       script: nox -R -rs safety
     - stage: Test
-    - name: "Unit Tests"
+      name: "Unit Tests"
       script: nox -R -rs tests
     - stage: Pre-Commit
-    - name: "Git Pre-Commit hooks"
+      name: "Git Pre-Commit hooks"
       script: nox -R -rs pre-commit
 
 after_success:
