@@ -43,27 +43,17 @@ jobs:
     - stage: "Quality - 3.9"
       name: "Linting, Type Checking, Safety"
       python: 3.9
-      script: nox --session mypy(python=3.9) typeguard(python=3.9) safety(python=3.9)
+      script: nox --force-python 3.9 -s mypy typeguard safety
 
     - stage: "Test - 3.9"
       name: "Unit Tests"
       python: 3.9
-      script: nox --session tests(python=3.9)
-
-    # - stage: "Quality - 3.10"
-    #   name: "Linting, Type Checking, Safety"
-    #   python: 3.10
-    #   script: nox --session mypy(python=3.10) typeguard(python=3.10) safety(python=3.10)
-
-    # - stage: "Test - 3.10"
-    #   name: "Unit Tests"
-    #   python: 3.10
-    #   script: nox --session tests(python=3.10)
+      script: nox --force-python 3.9 -s tests
 
     - stage: "Pre-Commit - 3.9"
       name: "Git Pre-Commit hooks"
       python: 3.9
-      script: nox --session pre-commit(python=3.9)
+      script: nox --force-python 3.9 -s pre-commit
 
 after_success:
   - coveralls
