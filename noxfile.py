@@ -1,11 +1,9 @@
 """Nox sessions."""
-# import os
-# import shutil
+import os
+import shutil
 import sys
 from pathlib import Path
 from textwrap import dedent
-import os
-from tkinter import ON
 import nox
 
 try:
