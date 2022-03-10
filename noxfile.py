@@ -4,7 +4,8 @@
 import sys
 from pathlib import Path
 from textwrap import dedent
-
+import os
+from tkinter import ON
 import nox
 
 try:
@@ -20,7 +21,7 @@ except ImportError:
     {sys.executable} -m pip install nox-poetry"""
     raise SystemExit(dedent(message)) from None
 
-
+ON_TRAVIS_CI = os.environ.get("TRAVIS")
 package = "tmi"
 PYTHON_VERSIONS = ["3.10", "3.9"]
 nox.needs_version = ">= 2022.1.7"
@@ -172,8 +173,13 @@ def coverage(session: Session) -> None:
         session.run("coverage", "combine")
 
     session.run("coverage", *report_args)
-    session.run("coverage", *xml_args)
-    session.run("coverage", *coveralls_args)
+    
+    if ON_TRAVIS_CI:
+        # If on Travis-CI create coverage json for coveralls
+        session.run("coverage", *coveralls_args)
+    else:
+        # If on local machine, create coverage xml for extentions
+        session.run("coverage", *xml_args)
 
 
 @session(python=PYTHON_VERSIONS)
