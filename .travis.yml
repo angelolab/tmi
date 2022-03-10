@@ -1,7 +1,7 @@
 language: python
 python:
-  - "3.9"
-  - "3.10"
+  - "3.9.10"
+  - "3.10.2"
 
 os: linux
 dist: xenial
@@ -40,23 +40,29 @@ install:
 
 jobs:
   include:
-    - stage: Quality
-      name: "Linting"
-      script: nox -R -rs mypy
-    - name: "Type Checking"
-      install: skip
-      script: nox -R -rs typeguard
-    - name: "Safety"
-      install: skip
-      script: nox -R -rs safety
-    - stage: Test
+    - stage: "Quality - 3.9"
+      python: 3.9
+      name: "Linting, Type Checking, Safety"
+      script: nox --session mypy(python=3.9) typeguard(python=3.9) safety(python=3.9)
+    - stage: "Test - 3.9"
       name: "Unit Tests"
-      install: skip
-      script: nox -R -rs tests
-    - stage: Pre-Commit
+      python: 3.9
+      script: nox --session tests(python=3.9)
+    - stage: "Quality - 3.10"
+      python: 3.10
+      name: "Linting, Type Checking, Safety"
+      script: nox --session mypy(python=3.10) typeguard(python=3.10) safety(python=3.10)
+    - stage: "Test - 3.10"
+      name: "Unit Tests"
+      python: 3.10
+      script: nox --session tests(python=3.10)
+    - stage: "Pre-Commit - 3.10"
+      python: 3.10
       name: "Git Pre-Commit hooks"
-      install: skip
-      script: nox -R -rs pre-commit
+      script: nox --session pre-commit(python=3.10)
 
 after_success:
   - coveralls
+
+notifications:
+  email: false
