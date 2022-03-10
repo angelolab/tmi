@@ -41,7 +41,7 @@ install:
 jobs:
   include:
     - stage: Quality
-    - name: "Linting"
+      name: "Linting"
       script: nox -R -rs mypy
     - name: "Type Checking"
       install: skip
@@ -50,11 +50,11 @@ jobs:
       install: skip
       script: nox -R -rs safety
     - stage: Test
-    - name: "Unit Tests"
+      name: "Unit Tests"
       install: skip
       script: nox -R -rs tests
     - stage: Pre-Commit
-    - name: "Git Pre-Commit hooks"
+      name: "Git Pre-Commit hooks"
       install: skip
       script: nox -R -rs pre-commit
 
