@@ -1,7 +1,7 @@
 language: python
 python:
-  - "3.9.10"
-  - "3.10.2"
+  - "3.9"
+  # - "3.10" uncomment when python 3.10 is available on travis-ci
 
 os: linux
 dist: xenial
@@ -41,25 +41,29 @@ install:
 jobs:
   include:
     - stage: "Quality - 3.9"
-      python: 3.9
       name: "Linting, Type Checking, Safety"
+      python: 3.9
       script: nox --session mypy(python=3.9) typeguard(python=3.9) safety(python=3.9)
+
     - stage: "Test - 3.9"
       name: "Unit Tests"
       python: 3.9
       script: nox --session tests(python=3.9)
-    - stage: "Quality - 3.10"
-      python: 3.10
-      name: "Linting, Type Checking, Safety"
-      script: nox --session mypy(python=3.10) typeguard(python=3.10) safety(python=3.10)
-    - stage: "Test - 3.10"
-      name: "Unit Tests"
-      python: 3.10
-      script: nox --session tests(python=3.10)
-    - stage: "Pre-Commit - 3.10"
-      python: 3.10
+
+    # - stage: "Quality - 3.10"
+    #   name: "Linting, Type Checking, Safety"
+    #   python: 3.10
+    #   script: nox --session mypy(python=3.10) typeguard(python=3.10) safety(python=3.10)
+
+    # - stage: "Test - 3.10"
+    #   name: "Unit Tests"
+    #   python: 3.10
+    #   script: nox --session tests(python=3.10)
+
+    - stage: "Pre-Commit - 3.9"
       name: "Git Pre-Commit hooks"
-      script: nox --session pre-commit(python=3.10)
+      python: 3.9
+      script: nox --session pre-commit(python=3.9)
 
 after_success:
   - coveralls
