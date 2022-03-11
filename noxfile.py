@@ -1,10 +1,12 @@
 """Nox sessions."""
 import os
-import shutil
 import sys
 from pathlib import Path
 from textwrap import dedent
+
 import nox
+
+# import shutil
 
 try:
     from nox_poetry import Session
@@ -171,7 +173,7 @@ def coverage(session: Session) -> None:
         session.run("coverage", "combine")
 
     session.run("coverage", *report_args)
-    
+
     if ON_TRAVIS_CI:
         # If on Travis-CI create coverage json for coveralls
         session.run("coverage", *coveralls_args)

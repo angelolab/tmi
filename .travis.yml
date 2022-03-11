@@ -27,7 +27,6 @@ env:
   # Set Matplotlib backend to Agg (Non-interactive, only writes to files)
   - MPLBACKEND=Agg
 
-
 # Installs poetry, nox, and nox-poetry
 before_install:
   - curl -sSL https://install.python-poetry.org | python3 -

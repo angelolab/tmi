@@ -7,7 +7,7 @@ select = C,E,F,W,BLK,DAR,S
 ;BLK: Enables the flake8-black warnings
 ;B: Bugbear finds various bugs and design problems in your programs
 ;S: A tool designed to find common security issues in Python code
-ignore = E203,W503,E501,D100,B101,DAR401
+ignore = E203,W503,E501,D100,B101,DAR401,DAR103
 ; E203:
 ; W503:
 ; E501: Maximum line length, disable for sanity
