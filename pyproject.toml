@@ -64,7 +64,7 @@ show_error_context = true
 ignore_missing_imports = true
 
 [tool.darglint]
-ignore = "DAR402"
+ignore = ["DAR402","DAR103"]
 
 ## COVERAGE ##
 

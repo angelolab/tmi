@@ -42,8 +42,7 @@ install:
 jobs:
   include:
     - stage: lint
-      script:
-        pre-commit run --all-files
+      script: pre-commit run --all-files
     - stage: test
         pytest -randomly-seed=42 -randomly-dont-reorganize -cov=tmi src/tmi
 
