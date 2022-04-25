@@ -15,7 +15,7 @@ stages:
   - lint
   - test
 
-# Set the caches
+# Set the cache
 cache:
   pip: true
   directories:
@@ -23,9 +23,10 @@ cache:
 
 # Environment variables
 env:
-  # Set Matplotlib backend to Agg (Non-interactive, only writes to files)
-  - MPLBACKEND=Agg
-  - PARALLELIZE=true
+  global:
+    # Set Matplotlib backend to Agg (Non-interactive, only writes to files)
+    - MPLBACKEND=Agg
+    - PARALLELIZE=true
 
 # Installs poetry and pre-commit
 before_install:
