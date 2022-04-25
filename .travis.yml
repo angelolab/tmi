@@ -45,7 +45,6 @@ jobs:
       script: pre-commit run --all-files
     - stage: test
       script: pytest --randomly-seed=42 --randomly-dont-reorganize --cov --pycodestyle
-
 after_success:
   - coveralls
 
