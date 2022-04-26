@@ -45,9 +45,9 @@ jobs:
     - stage: lint
       name: "Pre-commit"
       script: pre-commit run --all-files
-    - script: pytest --randomly-seed=42 --randomly-dont-reorganize --cov --pycodestyle
+    - script: poetry run pytest --randomly-seed=42 --randomly-dont-reorganize --cov --pycodestyle
 after_success:
-  - coveralls
+  - poetry run coveralls
 
 notifications:
   email: false
