@@ -82,19 +82,15 @@ def verify_in_list(**kwargs: Any) -> None:
         difference = [str(val) for val in test_list if val not in good_values]
 
         # Only printing up to the first 10 invalid values.
-        err_str = (
-            "Displaying {} of {} invalid value(s) provided for list {:^}.\n"
-        ).format(min(len(difference), 10), len(difference), test_list_name)
+        err_str = ("Displaying {} of {} invalid value(s) provided for list {:^}.\n").format(
+            min(len(difference), 10), len(difference), test_list_name
+        )
 
         err_str += create_invalid_data_str(difference)
 
         raise ValueError(err_str)
 
-    print(
-        "All values in list {} exist in list {}".format(
-            test_list_name, good_values_name
-        )
-    )
+    print(f"All values in list {test_list_name} exist in list {good_values_name}")
     return
 
 
@@ -130,9 +126,7 @@ def verify_same_elements(**kwargs: Any) -> None:
         missing_vals_2 = [str(val) for val in (set(list_two_cast) - set(list_one_cast))]
 
         # Total missing values
-        missing_vals_total = [
-            str(val) for val in set(list_one_cast) ^ set(list_two_cast)
-        ]
+        missing_vals_total = [str(val) for val in set(list_one_cast) ^ set(list_two_cast)]
 
         err_str = (
             "{} value(s) provided for list {:^} and list {:^} are not found in both lists.\n"
@@ -156,9 +150,5 @@ def verify_same_elements(**kwargs: Any) -> None:
 
         raise ValueError(err_str)
 
-    print(
-        "List {} and list {} contain the same elements".format(
-            list_one_name, list_two_name
-        )
-    )
+    print(f"List {list_one_name} and list {list_two_name} contain the same elements")
     return
