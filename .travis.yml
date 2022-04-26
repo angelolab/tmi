@@ -13,7 +13,7 @@ git:
 
 stages:
   - lint
-  - test
+  - tests
 
 # Set the cache
 cache:
@@ -44,7 +44,7 @@ jobs:
   include:
     - stage: lint
       script: pre-commit run --all-files
-    - stage: test
+    - stage: tests
       script: pytest --randomly-seed=42 --randomly-dont-reorganize --cov --pycodestyle
 after_success:
   - coveralls
