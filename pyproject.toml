@@ -79,7 +79,7 @@ ignore = ["DAR402", "DAR103"]
 ## COVERAGE ##
 
 [tool.coverage.paths]
-source = ["src/", "*/site-packages"]
+source = ["src", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true

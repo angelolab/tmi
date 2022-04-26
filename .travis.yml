@@ -11,8 +11,8 @@ dist: focal
 git:
   depth: false
 
-stages:
-  - lint
+# stages:
+#   - lint
 
 # Set the cache
 cache:
