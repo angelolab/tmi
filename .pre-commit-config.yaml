@@ -2,7 +2,7 @@ repos:
   - repo: local
     hooks:
       - id: black
-        name: black
+        name: Formatting - Black
         entry: black
         language: system
         types: [python]
@@ -11,11 +11,6 @@ repos:
         name: Check for added large files
         entry: check-added-large-files
         language: system
-      - id: check-poetry
-        name: Checks pyproject.toml
-        entry: check-poetry
-        language: system
-        types: [toml]
       - id: check-toml
         name: Check Toml
         entry: check-toml
