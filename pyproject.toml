@@ -55,6 +55,7 @@ darglint = "^1.8.1"
 pytest-randomly = "^3.11.0"
 pylint = "^2.12.2"
 pytest-pycodestyle = "^2.3.0"
+pre-commit = "^2.18.1"
 
 
 [build-system]
