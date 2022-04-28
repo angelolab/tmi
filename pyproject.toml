@@ -124,4 +124,4 @@ norecursedirs = ["tests/utils"]
 
 ## TOX ##
 # Currently there is no native support. When it is available, it would be best to consolidiate
-# another file (in this case the tox.ini file) into the pyproject.toml 
+# another file (in this case the tox.ini file) into the pyproject.toml
