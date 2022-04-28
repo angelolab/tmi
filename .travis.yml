@@ -27,12 +27,13 @@ env:
     - MPLBACKEND=Agg
     - PARALLELIZE=true
 
-# Installs poetry and pre-commit
+# Installs poetry, pre-commit, tox, tox-travis
 before_install:
   - curl -sSL https://install.python-poetry.org | python3 -
   - poetry --version
   - pip install coveralls
   - pip install pre-commit
+  - pip install tox tox-travis
 
 # Installs all packages needed for tmi in a virtual environment
 install:
@@ -44,9 +45,11 @@ jobs:
     - stage: lint
       name: "Pre-commit"
       script: pre-commit run --all-files
-    - script: poetry run pytest --randomly-seed=42 --randomly-dont-reorganize --cov --pycodestyle
+    - stage: test
+      name: "Test"
+      script: tox
 after_success:
-  - poetry run coveralls
+  - coveralls
 
 notifications:
   email: false
