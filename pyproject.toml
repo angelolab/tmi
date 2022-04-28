@@ -69,9 +69,9 @@ line_length = 99
 multi_line_output = 3
 
 [tool.black]
-line-length=99
-target-version=['py39', 'py310']
-preview=true
+line-length = 99
+target-version = ['py39', 'py310']
+preview = true
 
 [tool.mypy]
 strict = true
@@ -114,7 +114,16 @@ output = "coverage.json"
 
 ## TESTING ##
 [tool.pytest.ini_options]
-addopts = ["-v", "-s", "--durations=20"]
+addopts = [
+    "-v",
+    "-s",
+    "--durations=20",
+    "--randomly-seed=42",
+    "--randomly-dont-reorganize",
+    "--cov-report=",
+    "--cov",
+    "--pycodestyle",
+]
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::PendingDeprecationWarning",

@@ -45,7 +45,8 @@ jobs:
     - stage: lint
       script: pre-commit run --all-files
     - stage: test
-      script: pytest -s -vv --randomly-seed=42 --randomly-dont-reorganize --cov-report= --cov --pycodestyle
+      script: pytest
+
 after_success:
   - coveralls
 
