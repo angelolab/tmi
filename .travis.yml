@@ -43,11 +43,9 @@ install:
 jobs:
   include:
     - stage: lint
-      name: "Pre-commit"
       script: pre-commit run --all-files
     - stage: test
-      name: "Test"
-      script: tox
+      script: pytest -s -vv --randomly-seed=42 --randomly-dont-reorganize --cov-report= --cov --pycodestyle
 after_success:
   - coveralls
 
