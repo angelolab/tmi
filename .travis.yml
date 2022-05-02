@@ -45,7 +45,7 @@ jobs:
     - stage: lint
       script: pre-commit run --all-files
     - stage: test
-      script: pytest
+      script: tox
 
 after_success:
   - coveralls
