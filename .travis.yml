@@ -4,15 +4,13 @@ python:
   - 3.10
 
 # Ubuntu 20.04 (Focal) LTS
-os: linux
+os:
+  - linux
+  - osx
 dist: focal
 
 git:
   depth: false
-
-# stages:
-#   - lint
-#   - test
 
 # Set the cache
 cache:
@@ -37,20 +35,24 @@ before_install:
 
 # Installs all packages needed for tmi in a virtual environment
 install:
-  # - poetry install
+  - poetry install
   - pre-commit install-hooks
 
-# jobs:
-#   include:
-#     - stage: lint
-#       script:
-#         - pre-commit run --all-files
-#     - stage: test
-#       script:
-#         - tox
-
+# Run the linting (before_script) and run the tests (script, in tox file)
 before_script: pre-commit run --all-files
 script: tox
+
+matrix:
+  include:
+    - os: linux
+      dist: focal
+    - os: osx
+      osx_image: xcode13.2
+
+jobs:
+  include:
+    - stage: build
+      script: poetry build
 
 after_success:
   - coveralls
