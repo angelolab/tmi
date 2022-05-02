@@ -10,9 +10,9 @@ dist: focal
 git:
   depth: false
 
-stages:
-  - lint
-  - test
+# stages:
+#   - lint
+#   - test
 
 # Set the cache
 cache:
@@ -40,12 +40,17 @@ install:
   - poetry install
   - pre-commit install-hooks
 
-jobs:
-  include:
-    - stage: lint
-      script: pre-commit run --all-files
-    - stage: test
-      script: tox
+# jobs:
+#   include:
+#     - stage: lint
+#       script:
+#         - pre-commit run --all-files
+#     - stage: test
+#       script:
+#         - tox
+
+before_script: pre-commit run --all-files
+script: tox
 
 after_success:
   - coveralls
