@@ -5,6 +5,10 @@ python:
 git:
   depth: false
 
+# Ubuntu 20.04 (Focal) LTS
+os: linux
+dist: focal
+
 # Set the cache
 cache:
   pip: true
@@ -34,13 +38,6 @@ install:
 # Run the linting (before_script) and run the tests (script, in tox file)
 before_script: pre-commit run --all-files
 script: tox
-
-matrix:
-  include:
-    - os: linux
-      dist: focal
-    - os: osx
-      osx_image: xcode13.2
 
 jobs:
   include:
