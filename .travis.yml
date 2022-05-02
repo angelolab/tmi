@@ -37,7 +37,7 @@ install:
 
 # Run the linting (before_script) and run the tests (script, in tox file)
 before_script: pre-commit run --all-files
-script: tox
+script: poetry run pytest
 
 jobs:
   include:
