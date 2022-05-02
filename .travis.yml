@@ -2,13 +2,6 @@ language: python
 python:
   - 3.9
   - 3.10
-
-# Ubuntu 20.04 (Focal) LTS
-os:
-  - linux
-  - osx
-dist: focal
-
 git:
   depth: false
 
