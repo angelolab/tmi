@@ -37,7 +37,7 @@ before_install:
 
 # Installs all packages needed for tmi in a virtual environment
 install:
-  - poetry install
+  # - poetry install
   - pre-commit install-hooks
 
 # jobs:
