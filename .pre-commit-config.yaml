@@ -69,5 +69,6 @@ repos:
             "99",
             "multi_line_output",
             "3",
+            "--filter-files",
             "src/tmi",
           ]
