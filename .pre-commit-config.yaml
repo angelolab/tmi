@@ -61,13 +61,4 @@ repos:
     hooks:
       - id: isort
         name: isort (python)
-        args:
-          [
-            "--profile",
-            "black",
-            "--line_length",
-            "99",
-            "multi_line_output",
-            "3",
-            ".",
-          ]
+        args: ["--profile", "black", "-l", "99", "multi_line_output", "3", "."]
