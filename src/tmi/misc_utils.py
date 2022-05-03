@@ -1,7 +1,5 @@
 import os
-from typing import Any
-from typing import List
-from typing import Optional
+from typing import Any, List, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np

@@ -40,12 +40,12 @@ repos:
         language: system
         types: [python]
         args: [--py37-plus]
-      - id: reorder-python-imports
-        name: Reorder python imports
-        entry: reorder-python-imports
-        language: system
-        types: [python]
-        args: [--application-directories=src]
+      # - id: reorder-python-imports
+      #   name: Reorder python imports
+      #   entry: reorder-python-imports
+      #   language: system
+      #   types: [python]
+      #   args: [--application-directories=src]
       - id: trailing-whitespace
         name: Trim Trailing Whitespace
         entry: trailing-whitespace-fixer
@@ -69,6 +69,5 @@ repos:
             "99",
             "multi_line_output",
             "3",
-            "--filter-files",
             "src/tmi",
           ]

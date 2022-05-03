@@ -1,8 +1,6 @@
 import pytest
 
-from tmi.misc_utils import create_invalid_data_str
-from tmi.misc_utils import verify_in_list
-from tmi.misc_utils import verify_same_elements
+from tmi.misc_utils import create_invalid_data_str, verify_in_list, verify_same_elements
 
 
 def test_verify_in_list() -> None:
