@@ -1012,7 +1012,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.11"
-content-hash = "8dcbf15cc69b4bba921d9f9c0e474906b19bb6e2487bd92e1f64fae7f1467e3c"
+content-hash = "caf82d2458c078ab5631b5ba21312e317c2d403de09c823a6d99c0f40a326764"
 
 [metadata.files]
 "aspy.refactor-imports" = [
