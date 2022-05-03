@@ -20,7 +20,6 @@ env:
   global:
     # Set Matplotlib backend to Agg (Non-interactive, only writes to files)
     - MPLBACKEND=Agg
-    - PARALLELIZE=true
 
 # Installs poetry, pre-commit, tox, tox-travis
 before_install:
@@ -28,7 +27,6 @@ before_install:
   - poetry --version
   - pip install coveralls
   - pip install pre-commit
-  - pip install tox tox-travis
 
 # Installs all packages needed for tmi in a virtual environment
 install:
