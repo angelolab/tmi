@@ -1,9 +1,4 @@
 repos:
-  - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
-    hooks:
-      - id: isort
-        name: isort (python)
   - repo: local
     hooks:
       - id: black
@@ -61,3 +56,17 @@ repos:
     rev: v2.4.1
     hooks:
       - id: prettier
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
+        args:
+          [
+            "--profile",
+            "black",
+            "--line_length",
+            "99",
+            "multi_line_output",
+            "3",
+          ]
