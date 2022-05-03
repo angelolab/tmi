@@ -42,6 +42,7 @@ script: poetry run pytest
 jobs:
   include:
     - stage: build
+      python: 3.10
       script: poetry build
 
 after_success:
