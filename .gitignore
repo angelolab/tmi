@@ -134,3 +134,6 @@ dmypy.json
 
 # Coverage Output
 cov.xml
+
+# MacOS Files
+.DS_Store

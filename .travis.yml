@@ -33,7 +33,7 @@ install:
   - poetry install
   - pre-commit install-hooks
 
-# Run the linting (before_script) and run the tests (script, in tox file)
+# Run the linting (before_script) and run the tests
 before_script: pre-commit run --all-files
 script: poetry run pytest
 

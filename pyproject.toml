@@ -53,7 +53,7 @@ reorder-python-imports = "^2.7.1"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-## LINTING, FORMATTING and TYPECHECKING ##
+## LINTING, FORMATTING ##
 [tool.isort]
 profile = "black"
 line_length = 99
