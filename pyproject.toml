@@ -2,7 +2,13 @@
 name = "tmi"
 version = "0.1.0"
 description = "Toolbox for Multiplexed Imaging. Contains scripts and little tools which are used throughout ark-analysis, mibi-bin-tools, and toffy."
-authors = ["Angelo Lab <nfgreen@stanford.edu>"]
+authors = [
+    "Noah Frey Greenwald <nfgreen@stanford.edu>",
+    "Adam Kagel <ackagel@stanford.edu>",
+    "Alex Kong <alkong@stanford.edu>",
+    "Cami Laura Sowers <csowers@stanford.edu>",
+    "Sricharan Reddy Varra <srivarra@stanford.edu>"
+]
 license = "Modified Apache 2.0"
 homepage = "https://github.com/angelolab/tmi"
 repository = "https://github.com/angelolab/tmi"
@@ -54,6 +60,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 ## LINTING, FORMATTING ##
+
 [tool.isort]
 profile = "black"
 line_length = 99
@@ -93,6 +100,7 @@ package_depth = 99
 output = "coverage.json"
 
 ## TESTING ##
+
 [tool.pytest.ini_options]
 addopts = [
     "-v",
