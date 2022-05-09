@@ -1,0 +1,119 @@
+[tool.poetry]
+name = "tmi"
+version = "0.1.0"
+description = "Toolbox for Multiplexed Imaging. Contains scripts and little tools which are used throughout ark-analysis, mibi-bin-tools, and toffy."
+authors = [
+    "Noah Frey Greenwald <nfgreen@stanford.edu>",
+    "Adam Kagel <ackagel@stanford.edu>",
+    "Alex Kong <alkong@stanford.edu>",
+    "Cami Laura Sowers <csowers@stanford.edu>",
+    "Sricharan Reddy Varra <srivarra@stanford.edu>"
+]
+license = "Modified Apache 2.0"
+homepage = "https://github.com/angelolab/tmi"
+repository = "https://github.com/angelolab/tmi"
+documentation = "https://tmi.readthedocs.io"
+classifiers = ["Development Status :: 1 - Planning"]
+packages = [
+    { include = 'tmi', from = 'src' },
+    { include = 'tmi/py.typed', from = 'src' },
+]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/angelolab/tmi/releases"
+
+## DEPENDENCIES ##
+
+# Default Dependencies
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+numpy = "^1.22.2"
+xarray = "^2022.3.0"
+matplotlib = "^3.5.1"
+seaborn = "^0.11.2"
+
+# Development Dependencies
+[tool.poetry.dev-dependencies]
+bandit = "1.7.2"
+black = "^22.1.0"
+coveralls = "^3.3.1"
+coverage = { version = "^6.3.2", extras = ["toml"] }
+flake8 = "^4.0.1"
+flake8-bandit = "^2.1.2"
+flake8-bugbear = "^22.1.11"
+flake8-docstrings = "^1.6.0"
+isort = "^5.10.1"
+pre-commit = "^2.18.1"
+pre-commit-hooks = "^4.1.0"
+pylint = "^2.12.2"
+pytest = "^7.0.1"
+pytest-cases = "^3.6.9"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.7.0"
+pytest-pycodestyle = "^2.3.0"
+pytest-randomly = "^3.11.0"
+pyupgrade = "^2.31.0"
+reorder-python-imports = "^2.7.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+## LINTING, FORMATTING ##
+
+[tool.isort]
+profile = "black"
+line_length = 99
+multi_line_output = 3
+
+[tool.black]
+line-length = 99
+target-version = ['py39', 'py310']
+preview = true
+
+
+## COVERAGE ##
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["tmi"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "except ImportError",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
+show_missing = true
+ignore_errors = false
+fail_under = 45
+omit = ["**/*test*.py"]
+
+[tool.coverage.xml] # Output coverage as xml for text editor ui integration
+output = "coverage.xml"
+package_depth = 99
+
+[tool.coverage.json]
+output = "coverage.json"
+
+## TESTING ##
+
+[tool.pytest.ini_options]
+addopts = [
+    "-v",
+    "-s",
+    "--durations=20",
+    "--randomly-seed=42",
+    "--randomly-dont-reorganize",
+    "--cov-report=",
+    "--cov",
+    "--pycodestyle",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+norecursedirs = ["tests/utils"]
